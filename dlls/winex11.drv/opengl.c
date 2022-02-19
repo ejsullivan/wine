@@ -2115,7 +2115,7 @@ static const float *fs_hack_get_default_gamma_ramp(void)
 }
 
 static const char *fs_hack_gamma_vertex_shader_src =
-"#version 330\n"
+"#version 130\n"
 "\n"
 "const vec4 square[4] = vec4[4](\n"
 "    vec4(-1.0, -1.0, 0.0, 1.0),\n"
@@ -2140,7 +2140,8 @@ static const char *fs_hack_gamma_vertex_shader_src =
 ;
 
 static const char *fs_hack_gamma_frag_shader_src =
-"#version 330\n"
+"#version 130\n"
+"#extension GL_ARB_uniform_buffer_object : enable\n"
 "\n"
 "uniform sampler2D tex;\n"
 "in vec2 texCoord;\n"
@@ -2148,7 +2149,7 @@ static const char *fs_hack_gamma_frag_shader_src =
 "    float values[3 * 256];\n"
 "};\n"
 "\n"
-"layout(location = 0) out vec4 outColor;\n"
+"out vec4 outColor;\n"
 "\n"
 "void main(void)\n"
 "{\n"
